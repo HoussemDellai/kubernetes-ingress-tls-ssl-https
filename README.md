@@ -1,7 +1,26 @@
 # Kubernetes Ingress with TLS/SSL  
 
-Demoing configuration for Ingress and HTTPS/TLS/SSL in Kubernetes.
-The first part will start by installing an Ingress Controller (NGINX) into Kubernetes.
+This repo is demoing the configuration for Ingress and HTTPS/TLS/SSL in Kubernetes.  
+
+In Kubernetes, we can expose the services publicly by choosing the type LoadBalancer. That will create a public IP address for each service. But, we want to reduce the number of IP adresses to make some saving. And we want to map a URL like mycompany.com/login and mycompany.com/products to the right service object.  
+Well, this could be done through Kubernetes Ingress resources.  
+
+Kubernetes API doesn't provide an implementation for an ingress controller. So, we need to install it ourself. 
+
+Many ingress controllers are supported for Kubernetes:  
+
+1) Nginx Controller 
+2) HAProxy Ingress, Contour, Citrix Ingress Controller  
+3) API Gatways like Traeffic, Kong and Ambassador  
+4) Service mesh like Istio  
+5) Cloud managed ingress controllers like Application Gateway Ingress Controller (AGIC), AWS ALB Ingress Controller, Ingress GCE  
+
+The first part will start by configuring Ingress:
+
+1) Installing an ingress controller (NGINX) into Kubernetes.
+2) Deploying 2 different applications/services.
+3) Configuring ingress to route traffic depending on the URL.  
+
 The second part will deal with configuring SSL/TLS using Cert Manager.  
 
 ```bash

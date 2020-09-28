@@ -29,4 +29,4 @@ spec:
     app: webapp2
   ports:
   - port: 80
-  type: LoadBalancer # NodePort # ClusterIP  # 
+  type: ClusterIP # LoadBalancer # NodePort # 
