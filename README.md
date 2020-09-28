@@ -74,3 +74,30 @@ kubectl delete namespace ingress
 IMPORTANT NOTE: The Ingress and the Services should be inside the same Namespace.  
 Otherwise, the Ingress won't find the Service even with its full name:  
 <service-name>.<namespace>.svc.local
+
+
+```bash
+
+# Create a namespace for Cert Manager
+kubectl create namespace cert-manager
+
+# Get the Helm Chart for Cert Manager
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+
+# Install Cert Manager using Helm charts
+helm install cert-manager jetstack/cert-manager `
+    --namespace cert-manager `
+    --version v0.14.0 `
+    --set installCRDs=true
+
+# Check the created Pods
+kubectl get pods --namespace cert-manager
+
+# Install the Cluster Issuer
+kubectl apply --namespace app -f cluster-issuer.yaml
+
+# Check the services
+kubectl get services -n app
+
+```

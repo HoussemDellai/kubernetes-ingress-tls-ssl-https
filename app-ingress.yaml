@@ -20,7 +20,7 @@ spec:
           serviceName: webapp2-svc
           servicePort: 80
         path: /webapp2(/|$)(.*)
-  - host: frontend.20.50.168.130.nip.io # change the IP address here
+  - host: frontend.52.142.236.126.nip.io # change the IP address here
     http:
       paths:
       - backend:

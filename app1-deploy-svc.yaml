@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: webapp1
-        image: houssemdocker/blazorapp:1.9
+        image: houssemdocker/angularapp-docker-ci-npm-nginx:546
         ports:
         - containerPort: 80
 ---
