@@ -96,9 +96,17 @@ helm install cert-manager jetstack/cert-manager `
 kubectl get pods --namespace cert-manager
 
 # Install the Cluster Issuer
-kubectl apply --namespace app -f cluster-issuer.yaml
+kubectl apply --namespace app -f ssl-tls-cluster-issuer.yaml
+
+# Install the Ingress resource configured with TLS/SSL
+kubectl apply --namespace app -f ratings-web-ingress.yaml
+
+# Verify that the certificate was issued
+kubectl describe cert ratings-web-cert --namespace app
 
 # Check the services
 kubectl get services -n app
+
+# Now test the app on https://frontend.<ip-address>.nip.io
 
 ```
