@@ -1,5 +1,7 @@
 # Kubernetes Ingress with TLS/SSL
-Demoing configuration for Ingress and HTTPS/TLS/SSL in Kubernetes. 
+Demoing configuration for Ingress and HTTPS/TLS/SSL in Kubernetes.
+The first part will start by installing an Ingress Controller (NGINX) into Kubernetes.
+The second part will deal with configuring SSL/TLS using Cert Manager.  
 
 ```bash
 
