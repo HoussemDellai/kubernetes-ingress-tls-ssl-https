@@ -75,6 +75,7 @@ IMPORTANT NOTE: The Ingress and the Services should be inside the same Namespace
 Otherwise, the Ingress won't find the Service even with its full name:  
 <service-name>.<namespace>.svc.local
 
+In this second part of the lab, we will enable HTTPS in Kubernetes using Cert Manager and Lets Encrypt.
 
 ```bash
 
