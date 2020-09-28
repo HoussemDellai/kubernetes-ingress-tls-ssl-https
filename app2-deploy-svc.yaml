@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp2-deploy
+  namespace: app 
+spec:
+  selector:
+    matchLabels:
+      app: webapp2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp2
+    spec:
+      containers:
+      - name: webapp2
+        image: houssemdocker/mvc-app:1.0
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapp2-svc
+  namespace: app
+spec:
+  selector:
+    app: webapp2
+  ports:
+  - port: 80
+  type: ClusterIP  # LoadBalancer # NodePort #
