@@ -1,4 +1,5 @@
-# Kubernetes Ingress with TLS/SSL
+# Kubernetes Ingress with TLS/SSL  
+
 Demoing configuration for Ingress and HTTPS/TLS/SSL in Kubernetes.
 The first part will start by installing an Ingress Controller (NGINX) into Kubernetes.
 The second part will deal with configuring SSL/TLS using Cert Manager.  
@@ -20,7 +21,13 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 
 # Install the Helm (v3) chart for nginx ingress controller
-helm install app-ingress ingress-nginx/ingress-nginx --namespace ingress --create-namespace --set controller.replicaCount=2 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+# (If using Bash instead of Powershell, replace ` with \)
+helm install app-ingress ingress-nginx/ingress-nginx `
+     --namespace ingress `
+     --create-namespace `
+     --set controller.replicaCount=2 `
+     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux `
+     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
 # Get the Ingress Controller public IP address
 kubectl get services --namespace ingress
@@ -45,4 +52,6 @@ kubectl delete namespace ingress
 
 ```
 
-IMPORTANT NOTE: The Ingress and the Services should be inside the same Namespace. Otherwise, the Ingress won't find the Service even with its full name: <service-name>.<namespace>.svc.local
+IMPORTANT NOTE: The Ingress and the Services should be inside the same Namespace.  
+Otherwise, the Ingress won't find the Service even with its full name:  
+<service-name>.<namespace>.svc.local
