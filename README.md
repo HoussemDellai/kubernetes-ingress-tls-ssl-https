@@ -1,4 +1,4 @@
-# kubernetes-ingress-tls-ssl-https
+# Kubernetes Ingress with TLS/SSL
 Demoing configuration for Ingress and HTTPS/TLS/SSL in Kubernetes. 
 
 ```bash
