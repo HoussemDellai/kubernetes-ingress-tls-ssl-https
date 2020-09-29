@@ -76,6 +76,7 @@ Otherwise, the Ingress won't find the Service even with its full name:
 <service-name>.<namespace>.svc.local
 
 In this second part of the lab, we will enable HTTPS in Kubernetes using Cert Manager and Lets Encrypt.
+The Cert Manager is used to automatically generate and configure Let's Encrypt certificates.
 
 ```bash
 
