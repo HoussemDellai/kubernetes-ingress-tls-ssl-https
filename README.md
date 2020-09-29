@@ -110,7 +110,7 @@ kubectl get services -n app
 # Now test the app with HTTPS: https://frontend.<ip-address>.nip.io
 
 # Cleanup resources
-helm delete cert-manager
+helm delete cert-manager --namespace cert-manager
 kubectl delete namespace cert-manager
 kubectl delete --namespace app -f ssl-tls-cluster-issuer.yaml
 kubectl delete --namespace app -f ssl-tls-ingress.yaml
