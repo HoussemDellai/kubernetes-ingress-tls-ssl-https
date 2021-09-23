@@ -39,6 +39,9 @@ kubectl get services --namespace app
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 
+# You might need CRDs updated
+#kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.1/cert-manager.crds.yaml
+
 # Install the Helm (v3) chart for nginx ingress controller
 # (If using Bash instead of Powershell, replace ` with \)
 helm install app-ingress ingress-nginx/ingress-nginx `
