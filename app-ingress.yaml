@@ -9,10 +9,10 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  # - host: "frontend.74.241.163.56.nip.io" # change the IP address here
-  - http:
+  - host: "frontend.74.241.163.56.nip.io" # change the IP address here
+    http:
       paths:
-      - path: "/webapp1"
+      - path: "/"
         pathType: Prefix
         backend:
           service:
