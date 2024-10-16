@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: webapp1
-        image: houssemdocker/angularapp-docker-ci-npm-nginx:546
+        image: nginx # houssemdocker/angularapp-docker-ci-npm-nginx:546
         ports:
         - containerPort: 80
 ---
@@ -29,4 +29,4 @@ spec:
     app: webapp1
   ports:
   - port: 80
-  type: ClusterIP # LoadBalancer # NodePort # 
+  type: LoadBalancer # ClusterIP # LoadBalancer # NodePort # 

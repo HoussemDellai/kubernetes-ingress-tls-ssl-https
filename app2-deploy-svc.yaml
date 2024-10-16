@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: webapp2
-        image: houssemdocker/mvc-app:1.0
+        image: nginx # houssemdocker/mvc-app:1.0
         ports:
         - containerPort: 80
 ---

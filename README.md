@@ -1,8 +1,8 @@
 # Kubernetes Ingress with TLS/SSL  
 
-This repo is demoing the configuration for Ingress and HTTPS/TLS/SSL in Kubernetes.  
+This repo is demoing the configuration for `Ingress and `HTTPS/TLS/SSL` in `Kubernetes`.  
 
-In Kubernetes, we can expose the services publicly by choosing the type LoadBalancer. That will create a public IP address for each service. But, we want to reduce the number of IP adresses to make some saving. And we want to map a URL like mycompany.com/login and mycompany.com/products to the right service object.  
+In `Kubernetes`, we can expose the services publicly by choosing the type LoadBalancer. That will create a `public IP` address for each service. But, we want to reduce the number of IP adresses to make some saving. And we want to map a URL like `mycompany.com/login` and `mycompany.com/products` to the right service object.  
 Well, this could be done through Kubernetes Ingress resources.  
 
 Kubernetes API doesn't provide an implementation for an ingress controller. So, we need to install it ourself. 
@@ -13,18 +13,27 @@ Many ingress controllers are supported for Kubernetes:
 2) HAProxy Ingress, Contour, Citrix Ingress Controller  
 3) API Gatways like Traeffic, Kong and Ambassador  
 4) Service mesh like Istio  
-5) Cloud managed ingress controllers like Application Gateway Ingress Controller (AGIC), AWS ALB Ingress Controller, Ingress GCE  
+5) Cloud managed ingress controllers like `Application Gateway Ingress Controller (AGIC)`, AWS ALB Ingress Controller, Ingress GCE  
 
 The first part will start by configuring Ingress:
 
-1) Installing an ingress controller (NGINX) into Kubernetes.
+1) Installing an ingress controller (`NGINX`) into Kubernetes.
 2) Deploying 2 different applications/services.
 3) Configuring ingress to route traffic depending on the URL.  
 
-The second part will deal with configuring SSL/TLS using Cert Manager.  
+The second part will deal with configuring SSL/TLS using `Cert Manager`.  
 
-```bash
+Before starting the demo, make sure you have an `AKS` cluster. If ou don't, you can create one using the following commands.
 
+```sh
+az group create -n rg-aks-cluster -l swedencentral
+
+az aks create -n aks-cluster -g rg-aks-cluster --network-plugin azure --network-plugin-mode overlay
+
+az aks get-credentials -n aks-cluster -g rg-aks-cluster --overwrite-existing
+```
+
+```sh
 # Create a namespace for the apps
 kubectl apply -f app-namespace.yaml
 
@@ -45,8 +54,8 @@ helm install app-ingress ingress-nginx/ingress-nginx `
      --namespace ingress `
      --create-namespace `
      --set controller.replicaCount=2 `
-     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux `
-     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+     --set controller.nodeSelector."kubernetes\.io/os"=linux `
+     --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux
 
 # Get the Ingress Controller public IP address
 kubectl get services --namespace ingress
@@ -78,7 +87,7 @@ Otherwise, the Ingress won't find the Service even with its full name:
 In this second part of the lab, we will enable HTTPS in Kubernetes using Cert Manager and Lets Encrypt.
 The Cert Manager is used to automatically generate and configure Let's Encrypt certificates.
 
-```bash
+```sh
 
 # Create a namespace for Cert Manager
 kubectl create namespace cert-manager
